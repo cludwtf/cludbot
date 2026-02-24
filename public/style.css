@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #0a0a0a;
+  color: #00ff41;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Scanline effect */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15) 0px,
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 30px 0;
+  border-bottom: 1px solid #1a3a1a;
+  margin-bottom: 20px;
+}
+
+.header img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid #00ff41;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 65, 0.3));
+}
+
+.header h1 {
+  font-size: 28px;
+  color: #00ff41;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+  margin-bottom: 5px;
+}
+
+.header .tagline {
+  color: #4a8a4a;
+  font-size: 13px;
+}
+
+/* Contract Address */
+.ca-box {
+  background: #0d1a0d;
+  border: 1px solid #1a3a1a;
+  padding: 15px;
+  text-align: center;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.ca-box .label {
+  color: #4a8a4a;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.ca-box .address {
+  color: #00ff41;
+  font-size: 16px;
+  font-weight: 700;
+  text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
+  word-break: break-all;
+  cursor: pointer;
+}
+
+.ca-box .address:hover {
+  text-shadow: 0 0 15px rgba(0, 255, 65, 0.6);
+}
+
+/* Stats bar */
+.stats {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.stat {
+  background: #0d1a0d;
+  border: 1px solid #1a3a1a;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.stat .num {
+  font-size: 24px;
+  color: #00ff41;
+  font-weight: 700;
+}
+
+.stat .lbl {
+  font-size: 10px;
+  color: #4a8a4a;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Terminal */
+.terminal {
+  background: #0d0d0d;
+  border: 1px solid #1a3a1a;
+  border-radius: 4px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.terminal-header {
+  background: #1a1a1a;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #1a3a1a;
+}
+
+.terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.terminal-dot.red { background: #ff3b30; }
+.terminal-dot.yellow { background: #ffcc00; }
+.terminal-dot.green { background: #00ff41; }
+
+.terminal-title {
+  color: #4a8a4a;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.terminal-body {
+  padding: 15px;
+  max-height: 500px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.terminal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+  background: #0d0d0d;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+  background: #1a3a1a;
+  border-radius: 3px;
+}
+
+.thought-line {
+  padding: 4px 0;
+  line-height: 1.6;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.thought-time {
+  color: #2a5a2a;
+  margin-right: 8px;
+}
+
+.thought-prefix {
+  color: #ff6b35;
+}
+
+.thought-text {
+  color: #00dd38;
+}
+
+.cursor-blink {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: #00ff41;
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Links */
+.links {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin: 25px 0;
+  flex-wrap: wrap;
+}
+
+.links a {
+  color: #00ff41;
+  text-decoration: none;
+  border: 1px solid #1a3a1a;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.links a:hover {
+  background: #1a3a1a;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 20px;
+  color: #2a4a2a;
+  font-size: 11px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .container { padding: 10px; }
+  .header h1 { font-size: 22px; }
+  body { font-size: 12px; }
+  .ca-box .address { font-size: 12px; }
+  .stats { gap: 10px; }
+  .stat { padding: 8px 12px; }
+}

@@ -1,0 +1,6 @@
+node_modules/
+.env
+db/*.db
+db/.pipeline_last_run
+db/.figure_history.json
+*.log
