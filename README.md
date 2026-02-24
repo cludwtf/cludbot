@@ -125,14 +125,34 @@ every interaction makes the brain deeper. clud doesn't just respond — he **rem
 clud/
 ├── bot.js                 # core — mention replies + organic thoughts
 ├── brain.js               # CLUDE SDK integration (all 15 methods)
+├── deploy-token.js        # autonomous token deployment script
 ├── llm-personality.js     # who clud is
 ├── lib/
+│   ├── deployer.js        # brain-consulted pump.fun deployer
 │   ├── openrouter.js      # LLM routing
 │   └── anthropic-proxy.js # dream cycle proxy
 ├── chain-data.js          # DexScreener + Solana RPC + Helius
 ├── price-oracle.js        # live price data
 └── db/                    # local dedup (SQLite)
 ```
+
+### autonomous deployment
+
+clud deployed his own token. the deployer module (`lib/deployer.js`) integrates directly with the brain:
+
+1. **brain consultation** — recalls market memories, community sentiment, self-model
+2. **market analysis** — checks SOL price, volume hours, pump.fun activity
+3. **autonomous decision** — LLM generates token config based on brain context
+4. **on-chain execution** — builds pump.fun create + initial buy transaction
+5. **memory storage** — deployment decision and market conditions stored as memories
+
+```bash
+node deploy-token.js              # full brain-consulted deployment
+node deploy-token.js --dry-run    # simulate without tx
+node deploy-token.js --bundle 12  # deploy with 12 SOL initial buy
+```
+
+the deployer doesn't just execute — it **thinks** before it acts. every launch decision is informed by clud's accumulated memories and pattern recognition.
 
 ### CLUDE SDK methods used
 
